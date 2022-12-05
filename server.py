@@ -49,14 +49,276 @@ def book(competition,club):
         return render_template('welcome.html', club=club, competitions=competitions)
 
 
-@app.route('/purchasePlaces',methods=['POST'])
-def purchasePlaces():
-    competition = [c for c in competitions if c['name'] == request.form['competition']][0]
-    club = [c for c in clubs if c['name'] == request.form['club']][0]
-    placesRequired = int(request.form['places'])
-    competition['numberOfPlaces'] = int(competition['numberOfPlaces'])-placesRequired
-    flash('Great-booking complete!')
-    return render_template('welcome.html', club=club, competitions=competitions)
+@app.route("/purchasePlaces", methods=["POST"])
+def purchase_places():
+
+    selected_competition = HELPER.get_competition_by_name(name=request.form["competition"])
+    selected_club = HELPER.get_club_by_name(name=request.form["club"])
+    places_required = request.form["places"]
+
+    purchase_is_valid = HELPER.is_purchase_valid(
+        competition=selected_competition,
+        club=selected_club,
+        places=places_required,
+    )
+   
+    if purchase_is_valid:
+        
+        selected_competition["numberOfPlaces"] = int(selected_competition["numberOfPlaces"]) - int(places_required)
+        flash("Great-booking complete!")
+        return render_template(
+            "welcome.html",
+            club=selected_club,
+            competitions=HELPER.COMPETITIONS,
+        )
+    
+    
+    flash("Vous avez depassée le nombre de places maximum par compétition qui est de 12 !!")
+
+
+    return render_template(
+        "welcome.html",
+        club=HELPER.USER_CLUB,
+        competitions=HELPER.COMPETITIONS,
+    )
+
+
+@app.route("/purchasePlaces", methods=["POST"])
+def purchase_places():
+
+    selected_competition = HELPER.get_competition_by_name(name=request.form["competition"])
+    selected_club = HELPER.get_club_by_name(name=request.form["club"])
+    places_required = request.form["places"]
+
+    purchase_is_valid = HELPER.is_purchase_valid(
+        competition=selected_competition,
+        club=selected_club,
+        places=places_required,
+    )
+   
+    if purchase_is_valid:
+        
+        selected_competition["numberOfPlaces"] = int(selected_competition["numberOfPlaces"]) - int(places_required)
+        flash("Great-booking complete!")
+        return render_template(
+            "welcome.html",
+            club=selected_club,
+            competitions=HELPER.COMPETITIONS,
+        )
+    
+    
+    flash("Vous avez depassée le nombre de places maximum par compétition qui est de 12 !!")
+
+
+    return render_template(
+        "welcome.html",
+        club=HELPER.USER_CLUB,
+        competitions=HELPER.COMPETITIONS,
+    )
+
+
+@app.route("/purchasePlaces", methods=["POST"])
+def purchase_places():
+
+    selected_competition = HELPER.get_competition_by_name(name=request.form["competition"])
+    selected_club = HELPER.get_club_by_name(name=request.form["club"])
+    places_required = request.form["places"]
+
+    purchase_is_valid = HELPER.is_purchase_valid(
+        competition=selected_competition,
+        club=selected_club,
+        places=places_required,
+    )
+   
+    if purchase_is_valid:
+        
+        selected_competition["numberOfPlaces"] = int(selected_competition["numberOfPlaces"]) - int(places_required)
+        flash("Great-booking complete!")
+        return render_template(
+            "welcome.html",
+            club=selected_club,
+            competitions=HELPER.COMPETITIONS,
+        )
+    
+    
+    flash("Vous avez depassée le nombre de places maximum par compétition qui est de 12 !!")
+
+
+    return render_template(
+        "welcome.html",
+        club=HELPER.USER_CLUB,
+        competitions=HELPER.COMPETITIONS,
+    )
+
+
+@app.route("/purchasePlaces", methods=["POST"])
+def purchase_places():
+
+    selected_competition = HELPER.get_competition_by_name(name=request.form["competition"])
+    selected_club = HELPER.get_club_by_name(name=request.form["club"])
+    places_required = request.form["places"]
+
+    purchase_is_valid = HELPER.is_purchase_valid(
+        competition=selected_competition,
+        club=selected_club,
+        places=places_required,
+    )
+   
+    if purchase_is_valid:
+        
+        selected_competition["numberOfPlaces"] = int(selected_competition["numberOfPlaces"]) - int(places_required)
+        flash("Great-booking complete!")
+        return render_template(
+            "welcome.html",
+            club=selected_club,
+            competitions=HELPER.COMPETITIONS,
+        )
+    
+    
+    flash("Vous avez depassée le nombre de places maximum par compétition qui est de 12 !!")
+
+
+    return render_template(
+        "welcome.html",
+        club=HELPER.USER_CLUB,
+        competitions=HELPER.COMPETITIONS,
+    )
+
+
+@app.route("/purchasePlaces", methods=["POST"])
+def purchase_places():
+
+    selected_competition = HELPER.get_competition_by_name(name=request.form["competition"])
+    selected_club = HELPER.get_club_by_name(name=request.form["club"])
+    places_required = request.form["places"]
+
+    purchase_is_valid = HELPER.is_purchase_valid(
+        competition=selected_competition,
+        club=selected_club,
+        places=places_required,
+    )
+   
+    if purchase_is_valid:
+        
+        selected_competition["numberOfPlaces"] = int(selected_competition["numberOfPlaces"]) - int(places_required)
+        flash("Great-booking complete!")
+        return render_template(
+            "welcome.html",
+            club=selected_club,
+            competitions=HELPER.COMPETITIONS,
+        )
+    
+    
+    flash("Vous avez depassée le nombre de places maximum par compétition qui est de 12 !!")
+
+
+    return render_template(
+        "welcome.html",
+        club=HELPER.USER_CLUB,
+        competitions=HELPER.COMPETITIONS,
+    )
+
+
+@app.route("/purchasePlaces", methods=["POST"])
+def purchase_places():
+
+    selected_competition = HELPER.get_competition_by_name(name=request.form["competition"])
+    selected_club = HELPER.get_club_by_name(name=request.form["club"])
+    places_required = request.form["places"]
+
+    purchase_is_valid = HELPER.is_purchase_valid(
+        competition=selected_competition,
+        club=selected_club,
+        places=places_required,
+    )
+   
+    if purchase_is_valid:
+        
+        selected_competition["numberOfPlaces"] = int(selected_competition["numberOfPlaces"]) - int(places_required)
+        flash("Great-booking complete!")
+        return render_template(
+            "welcome.html",
+            club=selected_club,
+            competitions=HELPER.COMPETITIONS,
+        )
+    
+    
+    flash("Vous avez depassée le nombre de places maximum par compétition qui est de 12 !!")
+
+
+    return render_template(
+        "welcome.html",
+        club=HELPER.USER_CLUB,
+        competitions=HELPER.COMPETITIONS,
+    )
+
+
+@app.route("/purchasePlaces", methods=["POST"])
+def purchase_places():
+
+    selected_competition = HELPER.get_competition_by_name(name=request.form["competition"])
+    selected_club = HELPER.get_club_by_name(name=request.form["club"])
+    places_required = request.form["places"]
+
+    purchase_is_valid = HELPER.is_purchase_valid(
+        competition=selected_competition,
+        club=selected_club,
+        places=places_required,
+    )
+   
+    if purchase_is_valid:
+        
+        selected_competition["numberOfPlaces"] = int(selected_competition["numberOfPlaces"]) - int(places_required)
+        flash("Great-booking complete!")
+        return render_template(
+            "welcome.html",
+            club=selected_club,
+            competitions=HELPER.COMPETITIONS,
+        )
+    
+    
+    flash("Vous avez depassée le nombre de places maximum par compétition qui est de 12 !!")
+
+
+    return render_template(
+        "welcome.html",
+        club=HELPER.USER_CLUB,
+        competitions=HELPER.COMPETITIONS,
+    )
+
+
+@app.route("/purchasePlaces", methods=["POST"])
+def purchase_places():
+
+    selected_competition = HELPER.get_competition_by_name(name=request.form["competition"])
+    selected_club = HELPER.get_club_by_name(name=request.form["club"])
+    places_required = request.form["places"]
+
+    purchase_is_valid = HELPER.is_purchase_valid(
+        competition=selected_competition,
+        club=selected_club,
+        places=places_required,
+    )
+   
+    if purchase_is_valid:
+        
+        selected_competition["numberOfPlaces"] = int(selected_competition["numberOfPlaces"]) - int(places_required)
+        flash("Great-booking complete!")
+        return render_template(
+            "welcome.html",
+            club=selected_club,
+            competitions=HELPER.COMPETITIONS,
+        )
+    
+    
+    flash("Vous avez depassée le nombre de places maximum par compétition qui est de 12 !!")
+
+
+    return render_template(
+        "welcome.html",
+        club=HELPER.USER_CLUB,
+        competitions=HELPER.COMPETITIONS,
+    )
 
 
 # TODO: Add route for points display
