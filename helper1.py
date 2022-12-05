@@ -50,9 +50,8 @@ def get_max_places(club: dict):
 
 
 def is_competition_date_correct(date: str):
-    date_time_obj = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
-
-    return datetime.today() > date_time_obj
+    date_time = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
+    return datetime.today() > date_time
 
 
 def is_purchase_valid(competition: str, club: str, places: int):
