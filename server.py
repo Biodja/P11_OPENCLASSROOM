@@ -1,5 +1,4 @@
-import json
-from flask import Flask,render_template,request,redirect,flash,url_for
+from flask import Flask, render_template, request, redirect, flash, url_for
 import helper1 as HELPER
 
 app = Flask(__name__)
@@ -16,6 +15,8 @@ def index():
 @app.route("/showSummary", methods=["POST"])
 def show_summary():
     selected_club = HELPER.get_club_by_mail(mail=request.form["email"])
+    clubs = HELPER.load_clubs()
+
     if selected_club is None:
         print("pas trouvé !")
         flash("Sorry, that email wasn't found !!")
@@ -27,10 +28,11 @@ def show_summary():
 
         HELPER.USER_CLUB = selected_club
         print("trouvé !")
+
         return render_template(
             "welcome.html",
             club=HELPER.USER_CLUB,
-            competitions=HELPER.COMPETITIONS,
+            competitions=HELPER.COMPETITIONS, all_clubs=clubs
         )
 
     flash("Email address not found")
@@ -57,6 +59,7 @@ def book(competition, club):
         club=HELPER.USER_CLUB,
         competitions=HELPER.COMPETITIONS,
     )
+
 
 @app.route("/purchasePlaces", methods=["POST"])
 def purchase_places():
@@ -95,6 +98,6 @@ def purchase_places():
 # TODO: Add route for points display
 
 
-@app.route('/logout')
+@app.route("/logout")
 def logout():
-    return redirect(url_for('index'))
+    return redirect(url_for("index"))
