@@ -92,7 +92,6 @@ def purchase_places():
     )
 
 
-
 # TODO: Add route for points display
 
 
