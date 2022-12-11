@@ -1,17 +1,5 @@
 # gudlift-registration
 
-
-
-
-
-
-
-
-
-
-
-
-
 1. Why
 
 
@@ -70,7 +58,9 @@
     module utiliter: unittest
 
     ```bash
-    python3 test.py -v
+    python3 test_unitaire.py -v
+    python3 test_integration.py -v
+
     ```
 
     You are free to use whatever testing framework you like-the main thing is that you can show what tests you are using.
