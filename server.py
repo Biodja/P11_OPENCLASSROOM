@@ -39,6 +39,9 @@ def show_summary():
     return render_template("index.html")
 
 
+
+
+
 @app.route("/book/<competition>/<club>")
 def book(competition, club):
     selected_competition = HELPER.get_competition_by_name(name=competition)
@@ -97,7 +100,22 @@ def purchase_places():
 
 # TODO: Add route for points display
 
+@app.route("/points_display")
+def points_display():
+   
+    clubs = HELPER.load_clubs()
+
+    return render_template(
+            "competition.html",
+        
+            competitions=HELPER.COMPETITIONS, all_clubs=clubs
+        )
+
+
 
 @app.route("/logout")
 def logout():
     return redirect(url_for("index"))
+
+
+    
